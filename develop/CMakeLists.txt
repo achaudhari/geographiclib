@@ -102,11 +102,11 @@ if (OPENMP_FOUND OR OpenMP_FOUND)
   target_link_libraries (GeoidHeightTable ${OpenMP_CXX_LIBRARIES})
 endif ()
 
-if (MSVC OR CMAKE_CONFIGURATION_TYPES)
-  # Add _d suffix for your debug versions of the tools
-  set_target_properties (${DEVELPROGRAMS} PROPERTIES
-    DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
-endif ()
+# if (MSVC OR CMAKE_CONFIGURATION_TYPES)
+#   # Add _d suffix for your debug versions of the tools
+#   set_target_properties (${DEVELPROGRAMS} PROPERTIES
+#     DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
+# endif ()
 
 # Put all the programs into a folder in the IDE
 set_property (TARGET develprograms ${DEVELPROGRAMS} PROPERTY FOLDER develop)
