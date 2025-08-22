@@ -36,7 +36,7 @@ umask 0022
 
 START=`date +%s`
 DATE=`date +%F`
-VERSION=2.5
+VERSION=2.5.2
 SUFFIX=
 DISTVERSION=$VERSION$SUFFIX
 BRANCH=main
@@ -454,8 +454,8 @@ cat > $TEMP/tasks.txt <<EOF
 # install built version
 sudo make -C $TEMP/relc/GeographicLib-$VERSION/BUILD-system install
 
-# copy releases to distribution directory
-cp -p $TEMP/relc/GeographicLib-$VERSION/BUILD-dist/GeographicLib-$VERSION.{tar.gz,zip} $DEVELSOURCE/data-distrib/distrib-C++/
+# copy releases to distribution directory (now done with make {stage,deploy}-dist
+# cp -p $TEMP/relc/GeographicLib-$VERSION/BUILD-dist/GeographicLib-$VERSION.{tar.gz,zip} $DEVELSOURCE/data-distrib/distrib-C++/
 
 # commit and tag release branch
 cd $TEMP/gitr/geographiclib

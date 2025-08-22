@@ -25,14 +25,12 @@ add_dependencies (distrib-man prep-source)
 add_custom_target (distrib-all DEPENDS distrib-man autogen.done)
 add_custom_command (TARGET distrib-all
   COMMAND cd ${DISTRIB_NAME} && echo ${PROJECT_VERSION} > VERSION &&
-  chmod -R g-w .)
+  chmod -R g-w .
+  POST_BUILD)
 add_custom_target (dist
-  COMMAND
-  cd ${DISTRIB_DIR} &&
+  COMMAND cd ${DISTRIB_DIR} &&
   find ${PACKAGE_DIR} -type f | tar cfzT ${PACKAGE_NAME}.tar.gz -
-  COMMAND
-  rm -f ${DISTRIB_DIR}/${PACKAGE_NAME}.zip &&
-  cd ${DISTRIB_DIR} &&
+  COMMAND cd ${DISTRIB_DIR} && rm -f ${PACKAGE_NAME}.zip &&
   find ${PACKAGE_DIR} -type f | zip -q ${PACKAGE_NAME}.zip -@
   COMMENT "created distrib/${PACKAGE_NAME}.{tar.gz,zip}")
 add_dependencies (dist distrib-all)
